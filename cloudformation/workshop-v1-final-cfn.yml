@@ -7,7 +7,7 @@ Parameters:
     Default: 'PromptEngWithAnthropicNotebook'
   DefaultRepoUrl:
     Type: String
-    Default: 'https://github.com/anthropics/prompt-eng-interactive-tutorial.git'
+    Default: 'https://github.com/aws-samples/prompt-engineering-with-anthropic-claude-v-3.git'
 
 Resources:
   SageMakerExecutionRole:
@@ -25,7 +25,6 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
         - arn:aws:iam::aws:policy/AmazonBedrockFullAccess
-        - arn:aws:iam::aws:policy/AWSLambda_FullAccess
 
   KmsKey:
     Type: AWS::KMS::Key
