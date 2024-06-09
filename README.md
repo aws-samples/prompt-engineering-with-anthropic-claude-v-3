@@ -9,6 +9,7 @@ This course is intended to provide you with a comprehensive step-by-step underst
 - Recognize common failure modes and learn the '80/20' techniques to address them
 - Understand Claude's strengths and weaknesses
 - Build strong prompts from scratch for common use cases
+- Use advanced techniques that leverage Claude's tool use / function calling capabilities
 
 ## Course structure and content
 
