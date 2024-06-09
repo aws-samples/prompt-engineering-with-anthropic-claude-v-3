@@ -1,4 +1,3 @@
 .DS_Store
 utils/__pycache__/
-bedrock/__pycache__/
-anthropic/__pycache__/
+__pycache__
