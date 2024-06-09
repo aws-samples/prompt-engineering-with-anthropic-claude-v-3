@@ -216,7 +216,7 @@ In each conversational turn, you will begin by thinking about your response. Onc
             "modelId": modelId,
             "system": [{"text": system_prompt}],
             "messages": messages,
-            "additionalModelRequestFields": {"max_tokens": 4096},
+            "inferenceConfig": {"maxTokens": 4096},
             "toolConfig":toolConfig,
         }
 

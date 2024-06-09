@@ -181,7 +181,7 @@ def simple_chat():
         converse_api_params = {
             "modelId": modelId,
             "messages": messages,
-            "additionalModelRequestFields": {"max_tokens": 4096},
+            "inferenceConfig": {"maxTokens": 4096},
             "toolConfig":toolConfig,
         }
 
