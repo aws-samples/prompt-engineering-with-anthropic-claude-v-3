@@ -172,75 +172,113 @@ Find the relevant issues and write the Socratic tutor-style response. Do not giv
 Put each issue in <issue> tags and put your final response in <response> tags.
 """
 
-exercise_10_2_1_solution = """system_prompt = system_prompt_tools_general_explanation + \"""Here are the functions available in JSONSchema format:
+exercise_10_2_1_toolspec = """
+toolConfig = {
+  "tools": [
+    {
+      "toolSpec": {
+        "name": "generate_wikipedia_reading_list",
+        "description": "A tool is used to search Wikipedia for details related to the topic provided by the user.",
+        "inputSchema": {
+          "json": {
+            "type": "object",
+            "properties": {
+              "research_topic": {
+                "type": "string",
+                "description": "The topic to search for on wikipedia."
+              },
+              "article_titles": {
+                "type": "string",
+                "description": "a list of strings, where each string represents a potential wikipedia article title to research"
+              }
+            },
+            "required": ["research_topic", "article_titles"]
+          }
+        }
+      }
+    }
+  ]
+}
+"""
 
-<tools>
+exercise_10_2_1_code = """
+def get_research_help(research_topic, num_articles=3):
+    system_prompt = "You are a helpful AI research assistant. You have access to the get_research_help tool that will be used to search Wikipedia for deatils related to the topic provided by the user."
 
-<tool_description>
-<tool_name>get_user</tool_name>
-<description>
-Retrieves a user from the database by their user ID.
-</description>
-<parameters>
-<parameter>
-<name>user_id</name>
-<type>int</type>
-<description>The ID of the user to retrieve.</description>
-</parameter>
-</parameters>
-</tool_description>
+    prompt = f"I need help gathering research on the {research_topic}, to assist me I need you to creat {num_articles} article(s) related Wikipedia article titles on the topic."
 
-<tool_description>
-<tool_name>get_product</tool_name>
-<description>
-Retrieves a product from the database by its product ID.
-</description>
-<parameters>
-<parameter>
-<name>product_id</name>
-<type>int</type>
-<description>The ID of the product to retrieve.</description>
-</parameter>
-</parameters>
-</tool_description>
+    messages = [{"role": "user", "content": [{"text": prompt}]}]
 
-<tool_description>
-<tool_name>add_user</tool_name>
-<description>
-Adds a new user to the database.
-</description>
-<parameters>
-<parameter>
-<name>name</name>
-<type>str</type>
-<description>The name of the user.</description>
-</parameter>
-<parameter>
-<name>email</name>
-<type>str</type>
-<description>The email address of the user.</description>
-</parameter>
-</parameters>
-</tool_description>
+    converse_api_params = {
+        "modelId": modelId,
+        "system": [{"text": system_prompt}],
+        "messages": messages,
+        "inferenceConfig": {"temperature": 0.0, "maxTokens": 2000},
+        "toolConfig": toolConfig,
+    }
 
-<tool_description>
-<tool_name>add_product</tool_name>
-<description>
-Adds a new product to the database.
-</description>
-<parameters>
-<parameter>
-<name>name</name>
-<type>str</type>
-<description>The name of the product.</description>
-</parameter>
-<parameter>
-<name>price</name>
-<type>float</type>
-<description>The price of the product.</description>
-</parameter>
-</parameters>
-</tool_description>
+    response = bedrock_client.converse(**converse_api_params)
 
-</tools>
+    if response['stopReason'] == "tool_use":
+        tool_use = response['output']['message']['content'][-1]
+        tool_name = tool_use['toolUse']['name']
+        tool_inputs = tool_use['toolUse']['input']
+
+    if tool_name == "generate_wikipedia_reading_list":
+        print(f"Claude wants to use the {tool_name} tool")
+        research_topic = tool_inputs["research_topic"]
+        articles = tool_inputs["article_titles"]
+        article_titles = json.loads(articles)
+        try:
+            print(article_titles)
+            print(f"Claude is now calling the {tool_name} to research {research_topic}")
+            generate_wikipedia_reading_list(research_topic, article_titles)
+        except ValueError as e:
+            print(f"Error: {str(e)}")
+
+"""
+
+exercise_10_2_2_toolSpec = """
+toolConfig = {
+  "tools": [
+    {
+      "toolSpec": {
+        "name": "translations_from_claude",
+        "description": "The translations from Claude of a user provided phrase into English to Spanish, French, Japanese, and Arabic.",
+        "inputSchema": {
+          "json": {
+            "type": "object",
+            "properties": {
+              "english": {"type": "string", "description": "Your English translation of the provided content from the user"},
+              "spanish": {"type": "string", "description": "Your Spanish translation of the provided content from the user"},
+              "french": {"type": "string", "description": "Your French translation of the provided content from the user"},
+              "japanese": {"type": "string", "description": "Your Japanese translation of the provided content from the user"},
+              "arabic": {"type": "string", "description": "Your Arabic translation of the provided content from the user"}
+            },
+            "required": ["english", "spanish", "french", "japanese", "arabic"]
+          }
+        }
+      }
+    }
+  ],
+    "toolChoice": {"tool": {"name": "translations_from_claude"}}
+}
+"""
+
+exercise_10_2_2_translate = """
+def translate(query):
+    prompt = f"Translate this phrase from the user into English, Spanish, French, Japanese and Arabic. Content to translate: '{query}'"
+
+    converse_api_params = {
+        "modelId": modelId,
+        "messages": [{"role": "user", "content": [{"text": prompt}]}],
+        "additionalModelRequestFields": {"max_tokens": 4096},
+        "toolConfig": toolConfig
+    }
+
+    response = bedrock_client.converse(**converse_api_params)
+    tool_use = response['output']['message']['content'][-1]
+    translations_from_claude = tool_use['toolUse']['input']
+
+    print(json.dumps(translations_from_claude, ensure_ascii=False, indent=2))
 """
