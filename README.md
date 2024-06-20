@@ -10,6 +10,7 @@ This course is intended to provide you with a comprehensive step-by-step underst
 - Understand Claude's strengths and weaknesses
 - Build strong prompts from scratch for common use cases
 - Use advanced techniques that leverage Claude's tool use / function calling capabilities
+- Use Claude's multimodal Vision capabilites
 
 ## Course structure and content
 
@@ -54,4 +55,5 @@ Each chapter consists of a lesson and a set of exercises.
 - **Appendix:** Beyond Standard Prompting
   - Chaining Prompts
   - Tool Use
+  - Vision
   - Search & Retrieval
