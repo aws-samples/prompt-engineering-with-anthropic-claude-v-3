@@ -1,59 +1,60 @@
-# Welcome to Anthropic's Prompt Engineering Interactive Tutorial - Bedrock Edition
+# Anthropic의 프롬프트 엔지니어링 대화형 튜토리얼에 오신 것을 환영합니다 - Bedrock 에디션
 
-## Course introduction and goals
+## 과정 소개 및 목표
 
-This course is intended to provide you with a comprehensive step-by-step understanding of how to engineer optimal prompts within Claude, using Bedrock.
+이 과정은 Bedrock을 사용하여 Claude 내에서 최적의 프롬프트를 설계하는 방법에 대한 포괄적이고 단계별 이해를 제공하기 위한 것입니다.
 
-**After completing this course, you will be able to**:
-- Master the basic structure of a good prompt 
-- Recognize common failure modes and learn the '80/20' techniques to address them
-- Understand Claude's strengths and weaknesses
-- Build strong prompts from scratch for common use cases
-- Use advanced techniques that leverage Claude's tool use / function calling capabilities
-- Use Claude's multimodal Vision capabilites
+**이 과정을 완료하면 다음을 할 수 있게 됩니다:**:
+- 좋은 프롬프트의 기본 구조 마스터하기
+- 일반적인 실패 모드를 인식하고 이를 해결하기 위한 '80/20' 기법 학습하기
+- Claude의 강점과 약점 이해하기
+- 일반적인 사용 사례에 대한 강력한 프롬프트를 처음부터 구축하기
+- Claude의 도구 사용 / 함수 호출 기능을 활용하는 고급 기술 사용하기
+- Claude의 멀티 모달 비전 기능 사용하기
 
-## Course structure and content
+## 과정 구조 및 내용
 
-This course is structured to allow you many chances to practice writing and troubleshooting prompts yourself. The course is broken up into **9 chapters with accompanying exercises**, as well as an appendix of even more advanced methods. It is intended for you to **work through the course in chapter order**. 
+이 과정은 여러분이 직접 프롬프트를 작성하고 문제를 해결할 수 있는 많은 기회를 제공하도록 구성되어 있습니다. 이 과정은 **9개의 장과 그에 따른 연습문제**, 그리고 더 고급 방법들을 다루는 부록으로 구성되어 있습니다. 여러분이 **과정을 장 순서대로 진행**하도록 의도 되었습니다. 
 
-**Each lesson has an "Example Playground" area** at the bottom where you are free to experiment with the examples in the lesson and see for yourself how changing prompts can change Claude's responses.
+**각 수업에는 "예제 실습 영역"**이 하단에 있어 수업의 예제들을 직접 실험해보고 프롬프트를 변경하면 Claude의 응답이 어떻게 바뀌는지 직접 확인할 수 있습니다.
 
-Note: This tutorial uses our smallest, fastest, and cheapest model, Claude 3 Haiku. Anthropic has [two other models](https://aws.amazon.com/bedrock/claude/), Claude 3 Sonnet and Claude 3 Opus, which are more intelligent than Haiku, with Opus being the most intelligent.
 
-When you are ready to begin, go to `00_Tutorial_How-To` to proceed.
+Note: 참고: 이 튜토리얼은 가장 작고, 빠르며, 저렴한 모델인 Claude 3 Haiku를 사용합니다. Anthropic은 [두 가지 다른 모딜](https://aws.amazon.com/bedrock/claude/)인, Claude 3 Sonnet과 Claude 3 Opus를 제공하는데, 이들은 Haiku보다 더 지능적이며 Opus가 가장 지능적입니다.
 
-## Table of Contents
+시작할 준비가 되면 `00_Tutorial_How-To`로 이동하여 진행하세요.
 
-Each chapter consists of a lesson and a set of exercises.
+## 목차
 
-### Beginner
-- **Chapter 1:** Basic Prompt Structure
+각 장은 수업과 연습문제 세트로 구성되어 있습니다.
 
-- **Chapter 2:** Being Clear and Direct  
+### 초급
+- **1장:** 기본 프롬프트 구조
 
-- **Chapter 3:** Assigning Roles
+- **2장:** 명확하고 직접적인 표현 
 
-### Intermediate 
-- **Chapter 4:** Separating Data from Instructions
+- **3장:** 역할 부여하기
 
-- **Chapter 5:** Formatting Output & Speaking for Claude
+### 중급
+- **4장:** 데이터와 지시사항 분리하기
 
-- **Chapter 6:** Precognition (Thinking Step by Step)
+- **5징:** 출력 형식 지정 및 Claude를 대신해 말하기
 
-- **Chapter 7:** Using Examples
+- **6장:** 예지력 (단계별 사고)
 
-### Advanced
-- **Chapter 8:** Avoiding Hallucinations
+- **7장:** 예시 사용하기
 
-- **Chapter 9:** Building Complex Prompts (Industry Use Cases)
-  - Complex Prompts from Scratch - Chatbot
-  - Complex Prompts for Legal Services
-  - **Exercise:** Complex Prompts for Financial Services
-  - **Exercise:** Complex Prompts for Coding
-  - Congratulations & Next Steps
+### 고급
+- **8장:** 환각 파히가
 
-- **Appendix:** Beyond Standard Prompting
-  - Chaining Prompts
-  - Tool Use
-  - Vision
-  - Search & Retrieval
+- **9장:** 복잡한 프롬프트 구축 (산업 사용 사례)
+  - 경력 코치 챗봇
+  - 법률 서비스
+  - **Exercise:** 금융 서비스
+  - **Exercise:** 코딩
+  - 축하 및 다음 단계
+
+- **Appendix:** 표준 프롬프팅을 넘어서
+  - 프롬프트 연결하기
+  - 도구 사용
+  - 비전
+  - 검색 및 탐색
