@@ -14,3 +14,4 @@ PyMuPDF==1.24.5
 matplotlib==3.9.0
 numpy==1.26.4
 docutils<0.17
+packaging==24.2
