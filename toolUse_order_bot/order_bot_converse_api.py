@@ -6,7 +6,7 @@ from botocore.exceptions import ClientError
 session = boto3.Session()
 region = session.region_name
 
-modelId = 'anthropic.claude-3-sonnet-20240229-v1:0'
+modelId = 'anthropic.claude-3-5-sonnet-20241022-v2:0'
 
 bedrock_client = boto3.client(service_name = 'bedrock-runtime', region_name = region,)
 
